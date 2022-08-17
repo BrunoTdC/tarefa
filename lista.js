@@ -70,22 +70,14 @@ class Tarefa {
         let tarefas = Array()
         tarefas = bd.recuperarTarefa()
         let tbody = document.getElementById('tbody')
-        let idF = 0
-
-        const today = new Date().getDate();
-        
-        const mes = new Date().getMonth() + 1;
-        
-        const ano = new Date().getFullYear();
-        
-              
+        let idF = 0 
 
         tarefas.forEach(function(d){
           idF++
           let tr = tbody.insertRow()
 
            tr.insertCell(0).innerHTML = idF
-           tr.insertCell(1).innerHTML = `${today < 10 ? '0'+today : today}/${mes < 10 ? '0'+mes : mes}/${ano}`
+           tr.insertCell(1).innerHTML = `${d.dia < 10 ? '0'+d.dia : d.dia }/${d.mes < 10 ? '0'+d.mes : d.mes}/${d.ano}`
            tr.insertCell(2).innerHTML = d.nome
            tr.insertCell(3).innerHTML = `${d.diaG}/${d.mesG}/${d.anoG}`
            let detalhes = tr.insertCell(4)
@@ -150,9 +142,13 @@ class Tarefa {
     }
    
     recebeDados(){
+        
         let dados = {
             desc: document.getElementById('descricao').value,
             nome: document.getElementById('nome').value,
+            dia: new Date().getDate(),
+            mes: new Date().getMonth()+1,
+            ano: new Date().getFullYear(),
             diaG: document.getElementById('diag').value,
             mesG: document.getElementById('mesg').value,
             anoG: document.getElementById('anog').value,
