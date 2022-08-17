@@ -19,30 +19,6 @@
         <div class="formulario">
             <input id="nome" class="input_Index block" type="text" placeholder="Nome da Tarefa">
             
-            <h3>Data da Tarefa</h3>
-            <input class="input_Index dia" type="number" max="30" min="0" placeholder="Dia" id="dia">
-            <select name="mes" id="mes">
-                <option value="">Mês</option>
-                <option value="01">Janeiro</option>
-                <option value="02">Fevereiro</option>
-                <option value="03">Março</option>
-                <option value="04">Abril</option>
-                <option value="05">Maio</option>
-                <option value="06">Junho</option>
-                <option value="07">Julho</option>
-                <option value="08">Agosto</option>
-                <option value="09">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Desembro</option>
-            </select>
-            <select class="ano" name="ano" id="ano">
-                <option value="">Ano</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-            </select>
             <h3>Tarefa Agendada para:</h3>
             <input class="input_Index dia" type="number" max="30" min="0" placeholder="Dia" id="diag">
             <select name="mes" id="mesg">
@@ -71,7 +47,7 @@
             <textarea name="descricao" id="descricao" cols="50" rows="5"></textarea>
             <br>
             <button onclick="tarefa.start()" class="bot"><i class="fa-solid fa-paper-plane fa-2x "></i></button>
-            <button class="bot"><i class="fa-solid fa-delete-left fa-2x"></i></i></button>
+            <button onclick="tarefa.limpar()" class="bot"><i class="fa-solid fa-delete-left fa-2x"></i></i></button>
         </div>
             
 

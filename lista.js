@@ -63,7 +63,7 @@ class Tarefa {
         bd.gravar(dados)
       }
 
-      
+      this.limpar()
       
     }
     carregaColsulta(){
@@ -71,6 +71,13 @@ class Tarefa {
         tarefas = bd.recuperarTarefa()
         let tbody = document.getElementById('tbody')
         let idF = 0
+
+        const today = new Date().getDate();
+        
+        const mes = new Date().getMonth() + 1;
+        
+        const ano = new Date().getFullYear();
+        
               
 
         tarefas.forEach(function(d){
@@ -78,9 +85,9 @@ class Tarefa {
           let tr = tbody.insertRow()
 
            tr.insertCell(0).innerHTML = idF
-           tr.insertCell(1).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+           tr.insertCell(1).innerHTML = `${today < 10 ? '0'+today : today}/${mes < 10 ? '0'+mes : mes}/${ano}`
            tr.insertCell(2).innerHTML = d.nome
-           tr.insertCell(3).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+           tr.insertCell(3).innerHTML = `${d.diaG}/${d.mesG}/${d.anoG}`
            let detalhes = tr.insertCell(4)
            let i = document.createElement('i')
            let iL = document.createElement('i')
@@ -98,8 +105,14 @@ class Tarefa {
            detalhes.appendChild(btnL)
            btnL.onclick = function(){
             
-            let tela = document.getElementById('container').innerHTML = ` NOME: ${d.nome} <br/> <br/> DATA: ${d.dia}/${d.mes}/${d.ano} <br/> <br/> AGENTADO PARA: ${d.diaG}/${d.mesG}/${d.anoG} <br/> <br/> DESCRIÇÃO: ${d.desc}`
-                                    
+            let tela = document.getElementById('container').innerHTML = `<strong> NOME: </strong> <br/>  ${d.nome} <br/> <br/>  <strong> DATA: </strong> <br/> ${today < 10 ? '0'+today : today}/${mes < 10 ? '0'+mes : mes}/${ano} <br/> <br/> <strong> AGENTADO PARA: </strong>  <br/> ${d.diaG}/${d.mesG}/${d.anoG} <br/> <br/>  <strong> DESCRIÇÃO: </strong>  <br/> ${d.desc}`
+            
+            let telaSec = document.getElementById('vol')
+            let btn = document.createElement('a')
+            telaSec.appendChild(btn)  
+            btn.innerText = 'Voltar'     
+            btn.href ='index.html'             
+            telaSec.innerHTML += btn
            }
 
            btn.classList.add('btn')
@@ -129,16 +142,17 @@ class Tarefa {
     }
     
     limpar(){
-        dados.desc.document.getElementById('descricao').value = ''
+         document.getElementById('descricao').value = ''
+         document.getElementById('nome').value =''
+         document.getElementById('diag').value =''
+         document.getElementById('mesg').value =''
+         document.getElementById('anog').value =''
     }
    
     recebeDados(){
         let dados = {
             desc: document.getElementById('descricao').value,
             nome: document.getElementById('nome').value,
-            dia: document.getElementById('dia').value,
-            mes: document.getElementById('mes').value,
-            ano: document.getElementById('ano').value,
             diaG: document.getElementById('diag').value,
             mesG: document.getElementById('mesg').value,
             anoG: document.getElementById('anog').value,
@@ -153,11 +167,13 @@ class Tarefa {
         if(dados.nome == ''){
             msg += 'Nome não indentificado \n'
         }
-        if((dados.dia == '')||(dados.mes == '')||(dados.ano == '')){
-            msg += 'Data não indentificada \n'
-        }
+       
         if((dados.diaG == '')||(dados.mesG == '')||(dados.anoG == '')){
             msg += 'Data de Agendamento não indentificada \n'
+        }
+
+        if(dados.desc == ''){
+            msg += 'Descrição não indentificada \n'
         }
       
 

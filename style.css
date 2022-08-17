@@ -11,10 +11,11 @@ body{
 }
 #container{
     width: 750px;
-    margin: 0 auto;
+    margin: 50px auto;
     background-color: rgb(196, 170, 255);
     border-radius: 20px;
     padding: 50px;
+
 }
 h1, h3{
     font-family: 'Bebas Neue', cursive;
@@ -161,6 +162,30 @@ textarea{
 }
 
 .des i:hover{
+    color: rgb(30, 25, 54);
+    transition: 0.4s;
+   
+}
+strong{
+    color: white;
+}
+
+#vol{
+    color: rgba(0, 0, 0, 0);
+    width: 750px;
+    
+    margin: 0 auto;
+    padding: 15px;
+}
+#vol a{
+    color: white;
+    background-color: rgb(30, 25, 54);
+    padding: 10px;
+    border-radius: 15px;
+
+}
+#vol a:hover{
+    background-color: white;
     color: rgb(30, 25, 54);
     transition: 0.4s;
    
