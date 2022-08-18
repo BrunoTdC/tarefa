@@ -7,12 +7,12 @@
 
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(228, 228, 228);
+    background: linear-gradient(to right,rgb(255, 153, 0),rgb(234, 0, 255));
 }
 #container{
     width: 750px;
     margin: 50px auto;
-    background-color: rgb(196, 170, 255);
+    background-color: rgba(255, 255, 255, 0.493);
     border-radius: 20px;
     padding: 50px;
 
@@ -22,7 +22,7 @@ h1, h3{
 }
 .titule{
     text-align: center;
-    color: rgb(30, 25, 54);
+    color: rgb(159, 0, 165);
     
 }
 .formulario{
@@ -38,11 +38,11 @@ input{
     
 }
 button{
-    background-color: rgb(30, 25, 54) ;
+    background-color: rgb(159, 0, 165);
     padding: 10px;
     border: none;
     border-radius: 0 50px 50px 0;
-    border: 1px solid rgb(30, 25, 54);
+    border: 1px solid rgb(159, 0, 165);
     
 }
 i{
@@ -58,11 +58,11 @@ a{
 
 #taref button{
     
-    background-color: rgb(30, 25, 54) ;
+    background-color: rgb(159, 0, 165);
     padding: 10px;
     border: none;
     border-radius: 50px;
-    border: 1px solid rgb(30, 25, 54);
+    border: 1px solid rgb(159, 0, 165);
     
 }
 table{
@@ -117,6 +117,7 @@ select{
 }
 h3{
     margin: 10px;
+    color: rgb(159, 0, 165);
 }
 textarea{
     border-radius: 10px;
@@ -133,7 +134,7 @@ textarea{
 
 }
 .bot i:hover{
-    color: rgb(30, 25, 54);
+    color: rgb(159, 0, 165);
     transition: 0.4s;
 }
 .bot:hover{
@@ -142,13 +143,6 @@ textarea{
     transition: 0.4s;
 
 }
-#tela{
-    width: 600px;
-    height: 400px;
-    background-color: white;
-    border-radius: 20px;
-    margin: 0 auto;
-}
 
 .btn{
     background: none;
@@ -156,22 +150,22 @@ textarea{
 }
 
 .btn i:hover{
-    color: rgb(30, 25, 54);
+    color: rgb(159, 0, 165);
     transition: 0.4s;
    
 }
 
 .des i:hover{
-    color: rgb(30, 25, 54);
+    color: rgb(159, 0, 165);
     transition: 0.4s;
    
 }
 strong{
-    color: white;
+    color: rgb(159, 0, 165);;
 }
 
 #vol{
-    color: rgba(0, 0, 0, 0);
+    color: rgb(159, 0, 165);
     width: 750px;
     
     margin: 0 auto;
@@ -179,14 +173,147 @@ strong{
 }
 #vol a{
     color: white;
-    background-color: rgb(30, 25, 54);
+    background-color:rgb(159, 0, 165);
     padding: 10px;
     border-radius: 15px;
 
 }
 #vol a:hover{
     background-color: white;
-    color: rgb(30, 25, 54);
+    color: rgb(159, 0, 165);
     transition: 0.4s;
    
+}
+
+@media (max-width: 320px) {
+    
+    #container{
+        width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    input{
+       width: 60%;
+       display: block;
+       margin-bottom: 10px;
+       border-radius: 10px;
+        
+    }
+    select{
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .ano{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .dia{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .block{
+        width: 100%;
+        
+    }
+       textarea{
+        width: 100%;
+    }
+    button{
+       margin-bottom: 20px;
+       border-radius: 50px;
+        
+    }
+    .formulario input{
+        display: inline;
+    }
+    tbody tr td{
+        padding: 0;
+        font-size: 12px;
+    }
+    th{
+        padding: 0 ;
+        font-size: 12px;
+    }
+    thead{
+        margin: 0;
+    }
+    i{
+        color: white;
+        margin: 0;
+        padding: 0;
+        
+    }
+    
+    
+    
+    
+}
+@media (min-width: 320px) and (max-width: 584px) {
+    
+    #container{
+        width: 300px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    input{
+       width: 60%;
+       display: block;
+       margin-bottom: 10px;
+       border-radius: 10px;
+        
+    }
+    select{
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .ano{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .dia{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .block{
+        width: 100%;
+        
+    }
+       textarea{
+        width: 100%;
+    }
+    button{
+       margin-bottom: 20px;
+       border-radius: 50px;
+        
+    }
+    .formulario input{
+        display: inline;
+    }
+    tbody tr td{
+        padding: 0;
+        font-size: 12px;
+    }
+    th{
+        padding: 0 ;
+        font-size: 12px;
+    }
+    thead{
+        margin: 0;
+    }
+    i{
+        color: white;
+        margin: 0;
+        padding: 0;
+        
+    }
+    
+    
+    
+    
 }
