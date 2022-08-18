@@ -48,8 +48,25 @@ class Bd {
     remove(id){
         localStorage.removeItem(id)
     }
+
+    pesquisar(filtro){
+
+       let tarefasFiltro = Array()
+       tarefasFiltro = this.recuperarTarefa()
+
+       console.log(tarefasFiltro)
+       console.log(filtro) 
+       
+      if(filtro.nome != ''){
+        tarefasFiltro = tarefasFiltro.filter(d => d.nome == filtro.nome)
+      } 
+
+      return tarefasFiltro
+    }
    
 }
+
+
 
 class Tarefa {
     constructor(){  
@@ -66,9 +83,86 @@ class Tarefa {
       this.limpar()
       
     }
+    pesquisarTarefa(){
+        let filtro = {
+            nome : document.getElementById('nome').value
+        } 
+
+        let limpa = true
+
+        let tarefas = bd.pesquisar(filtro)
+        console.log(tarefas)
+
+        let tbody = document.getElementById('tbody')
+        tbody.innerHTML = ''
+        let idF = 0 
+
+        tarefas.forEach(function(d){
+          idF++
+          let tr = tbody.insertRow()
+
+           tr.insertCell(0).innerHTML = idF
+           tr.insertCell(1).innerHTML = `${d.dia < 10 ? '0'+d.dia : d.dia }/${d.mes < 10 ? '0'+d.mes : d.mes}/${d.ano}`
+           tr.insertCell(2).innerHTML = d.nome
+           tr.insertCell(3).innerHTML = `${d.diaG}/${d.mesG}/${d.anoG}`
+           let detalhes = tr.insertCell(4)
+           let i = document.createElement('i')
+           let iL = document.createElement('i')
+           let btn = document.createElement('button')
+           let btnL = document.createElement('button')
+           
+                  
+           btnL.appendChild(i)
+           i.classList.add('fa-solid')
+           i.classList.add('fa-circle-info')
+           i.classList.add('fa-xl')
+
+           btnL.id = d.id
+          
+           detalhes.appendChild(btnL)
+           btnL.onclick = function(){
+            
+            let tela = document.getElementById('container').innerHTML = `<strong> NOME: </strong> <br/>  ${d.nome} <br/> <br/>  <strong> DATA: </strong> <br/> ${d.dia < 10 ? '0'+d.dia : d.dia}/${d.mes < 10 ? '0'+d.mes : d.mes}/${d.ano} <br/> <br/> <strong> AGENTADO PARA: </strong>  <br/> ${d.diaG}/${d.mesG}/${d.anoG} <br/> <br/>  <strong> DESCRIÇÃO: </strong>  <br/> ${d.desc}`
+            
+            let telaSec = document.getElementById('vol')
+            let btn = document.createElement('a')
+            telaSec.appendChild(btn)  
+            btn.innerText = 'Voltar'     
+            btn.href ='index.html'             
+            telaSec.innerHTML += btn
+           }
+
+           btn.classList.add('btn')
+           btnL.classList.add('btn')
+
+           btn.appendChild(iL)
+           iL.classList.add('fa-solid')
+           iL.classList.add('fa-trash-can')
+           iL.classList.add('fa-xl')
+
+           detalhes.appendChild(btn)
+           btn.id = `tarefa_${d.id}`
+
+
+           btn.onclick = function(){
+
+            let id = this.id.replace('tarefa_','')
+            
+            bd.remove(id)
+            window.location.reload()
+            
+           }
+           
+        })
+
+
+       this.limpar(limpa)
+
+    }
     carregaColsulta(){
         let tarefas = Array()
         tarefas = bd.recuperarTarefa()
+
         let tbody = document.getElementById('tbody')
         let idF = 0 
 
@@ -97,7 +191,7 @@ class Tarefa {
            detalhes.appendChild(btnL)
            btnL.onclick = function(){
             
-            let tela = document.getElementById('container').innerHTML = `<strong> NOME: </strong> <br/>  ${d.nome} <br/> <br/>  <strong> DATA: </strong> <br/> ${today < 10 ? '0'+today : today}/${mes < 10 ? '0'+mes : mes}/${ano} <br/> <br/> <strong> AGENTADO PARA: </strong>  <br/> ${d.diaG}/${d.mesG}/${d.anoG} <br/> <br/>  <strong> DESCRIÇÃO: </strong>  <br/> ${d.desc}`
+            let tela = document.getElementById('container').innerHTML = `<strong> NOME: </strong> <br/>  ${d.nome} <br/> <br/>  <strong> DATA: </strong> <br/> ${d.dia < 10 ? '0'+d.dia : d.dia}/${d.mes < 10 ? '0'+d.mes : d.mes}/${d.ano} <br/> <br/> <strong> AGENTADO PARA: </strong>  <br/> ${d.diaG}/${d.mesG}/${d.anoG} <br/> <br/>  <strong> DESCRIÇÃO: </strong>  <br/> ${d.desc}`
             
             let telaSec = document.getElementById('vol')
             let btn = document.createElement('a')
@@ -133,12 +227,17 @@ class Tarefa {
         
     }
     
-    limpar(){
+    limpar(limpa){
+        if(limpa == true){
+            document.getElementById('nome').value =''
+        }else{
          document.getElementById('descricao').value = ''
          document.getElementById('nome').value =''
          document.getElementById('diag').value =''
          document.getElementById('mesg').value =''
          document.getElementById('anog').value =''
+        }
+         
     }
    
     recebeDados(){
