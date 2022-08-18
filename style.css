@@ -165,7 +165,7 @@ strong{
 }
 
 #vol{
-    color: rgb(159, 0, 165);
+    color: rgb(159, 0, 165, 0);
     width: 750px;
     
     margin: 0 auto;
